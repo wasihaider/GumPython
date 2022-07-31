@@ -9,6 +9,11 @@ class FlagTypeChoice:
     ALIGN = "alignment"
 
 
+class FlagSeparatorChoice:
+    DOT = "."
+    HYPHEN = "-"
+
+
 @dataclass
 class FlagType:
     name: str
@@ -47,9 +52,11 @@ class Flag:
         return None
 
 
+@dataclass
 class SubFlag(Flag):
-    sub_name: str
+    sub_name: str = None
+    separator: str = None
 
     @property
     def flag(self):
-        return f"--{self.name}.{self.sub_name}"
+        return f"--{self.name}{self.separator}{self.sub_name}"

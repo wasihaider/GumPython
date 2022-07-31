@@ -1,7 +1,9 @@
 from .flags import (
     Flag,
     FlagType,
-    FlagTypeChoice
+    FlagTypeChoice,
+    SubFlag,
+    FlagSeparatorChoice
 )
 
 
@@ -15,11 +17,15 @@ class StyleBorderFlag(StyleFlag):
         type=FlagType(name=FlagTypeChoice.COLOR),
         default="none"
     )
-    background_color = Flag(
-        name="background",
-        type=FlagType(name=FlagTypeChoice.COLOR)
+    background_color = SubFlag(
+        name="border",
+        type=FlagType(name=FlagTypeChoice.COLOR),
+        sub_name="background",
+        separator=FlagSeparatorChoice.HYPHEN
     )
-    foreground_color = Flag(
-        name="foreground",
-        type=FlagType(name=FlagTypeChoice.COLOR)
+    foreground_color = SubFlag(
+        name="border",
+        type=FlagType(name=FlagTypeChoice.COLOR),
+        sub_name="foreground",
+        separator=FlagSeparatorChoice.HYPHEN
     )
