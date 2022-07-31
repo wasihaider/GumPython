@@ -1,8 +1,12 @@
-from flags import StyleBorderFlag
+from gumpython.flags import (
+    StyleBorderFlag
+)
+
 
 class Argument:
     pass
 
+
 class StyleArgument(Argument):
     def __init__(self):
-        self.border =
+        self.border = StyleBorderFlag()
