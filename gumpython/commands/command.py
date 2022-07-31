@@ -1,5 +1,5 @@
 import subprocess
-from run_command import run_command
+from gumpython.run_command import run_command
 
 
 class GumCommand:
