@@ -18,12 +18,12 @@ class ChooseCursorFlag(ChooseFlag):
         # main
         self.cursor = Flag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.STR,
+            type=FlagType(FlagTypeChoice.STR),
             default="> "
         )
         self.prefix = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.STR,
+            type=FlagType(FlagTypeChoice.STR),
             sub_name="prefix",
             separator=FlagSeparatorChoice.HYPHEN
         )
@@ -31,20 +31,20 @@ class ChooseCursorFlag(ChooseFlag):
         # align
         self.align = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.ALIGN,
+            type=FlagType(FlagTypeChoice.ALIGN),
             default="left",
             sub_name="align",
             separator=FlagSeparatorChoice.DOT
         )
         self.margin = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.POSITION,
+            type=FlagType(FlagTypeChoice.POSITION),
             sub_name="margin",
             separator=FlagSeparatorChoice.DOT
         )
         self.padding = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.POSITION,
+            type=FlagType(FlagTypeChoice.POSITION),
             sub_name="padding",
             separator=FlagSeparatorChoice.DOT
         )
@@ -52,13 +52,13 @@ class ChooseCursorFlag(ChooseFlag):
         # color
         self.background = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.COLOR,
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="background",
             separator=FlagSeparatorChoice.DOT
         )
         self.foreground = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.COLOR,
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="foreground",
             separator=FlagSeparatorChoice.DOT
         )
@@ -66,31 +66,31 @@ class ChooseCursorFlag(ChooseFlag):
         # style
         self.bold = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BOOL,
+            type=FlagType(FlagTypeChoice.BOOL),
             sub_name="bold",
             separator=FlagSeparatorChoice.DOT
         )
         self.faint = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BOOL,
+            type=FlagType(FlagTypeChoice.BOOL),
             sub_name="faint",
             separator=FlagSeparatorChoice.DOT
         )
         self.italic = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BOOL,
+            type=FlagType(FlagTypeChoice.BOOL),
             sub_name="italic",
             separator=FlagSeparatorChoice.DOT
         )
         self.strikethrough = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BOOL,
+            type=FlagType(FlagTypeChoice.BOOL),
             sub_name="strikethrough",
             separator=FlagSeparatorChoice.DOT
         )
         self.underline = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BOOL,
+            type=FlagType(FlagTypeChoice.BOOL),
             sub_name="underline",
             separator=FlagSeparatorChoice.DOT
         )
@@ -98,20 +98,20 @@ class ChooseCursorFlag(ChooseFlag):
         # border
         self.border = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.BORDER,
+            type=FlagType(FlagTypeChoice.BORDER),
             default="none",
             sub_name="border",
             separator=FlagSeparatorChoice.DOT
         )
         self.border_background = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.COLOR,
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="border-background",
             separator=FlagSeparatorChoice.DOT
         )
         self.border_foreground = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.COLOR,
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="border-foreground",
             separator=FlagSeparatorChoice.DOT
         )
@@ -119,13 +119,13 @@ class ChooseCursorFlag(ChooseFlag):
         # size
         self.height = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.INT,
+            type=FlagType(FlagTypeChoice.INT),
             sub_name="height",
             separator=FlagSeparatorChoice.DOT
         )
         self.width = SubFlag(
             name=self.cursor_flag_name,
-            type=FlagTypeChoice.INT,
+            type=FlagType(FlagTypeChoice.INT),
             sub_name="width",
             separator=FlagSeparatorChoice.DOT
         )

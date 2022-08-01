@@ -15,18 +15,18 @@ class StyleBorderFlag(StyleFlag):
     def __init__(self):
         self.style = Flag(
             name="border",
-            type=FlagType(name=FlagTypeChoice.BORDER),
+            type=FlagType(FlagTypeChoice.BORDER),
             default="none"
         )
         self.background_color = SubFlag(
             name="border",
-            type=FlagType(name=FlagTypeChoice.COLOR),
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="background",
             separator=FlagSeparatorChoice.HYPHEN
         )
         self.foreground_color = SubFlag(
             name="border",
-            type=FlagType(name=FlagTypeChoice.COLOR),
+            type=FlagType(FlagTypeChoice.COLOR),
             sub_name="foreground",
             separator=FlagSeparatorChoice.HYPHEN
         )
@@ -36,50 +36,50 @@ class StyleTextFlag(StyleFlag):
     def __init__(self):
         self.align = Flag(
             name="align",
-            type=FlagType(name=FlagTypeChoice.ALIGN),
+            type=FlagType(FlagTypeChoice.ALIGN),
             default="left"
         )
         self.background_color = Flag(
             name="background",
-            type=FlagType(name=FlagTypeChoice.COLOR)
+            type=FlagType(FlagTypeChoice.COLOR)
         )
         self.foreground_color = Flag(
             name="foreground",
-            type=FlagType(name=FlagTypeChoice.COLOR)
+            type=FlagType(FlagTypeChoice.COLOR)
         )
         self.bold = Flag(
             name="bold",
-            type=FlagType(name=FlagTypeChoice.BOOL)
+            type=FlagType(FlagTypeChoice.BOOL)
         )
         self.faint = Flag(
             name="faint",
-            type=FlagType(name=FlagTypeChoice.BOOL)
+            type=FlagType(FlagTypeChoice.BOOL)
         )
         self.height = Flag(
             name="height",
-            type=FlagType(name=FlagTypeChoice.INT)
+            type=FlagType(FlagTypeChoice.INT)
         )
         self.italic = Flag(
             name="italic",
-            type=FlagType(name=FlagTypeChoice.BOOL)
+            type=FlagType(FlagTypeChoice.BOOL)
         )
         self.strikethrough = Flag(
             name="strikethrough",
-            type=FlagType(name=FlagTypeChoice.BOOL)
+            type=FlagType(FlagTypeChoice.BOOL)
         )
         self.underline = Flag(
             name="underline",
-            type=FlagType(name=FlagTypeChoice.BOOL)
+            type=FlagType(FlagTypeChoice.BOOL)
         )
         self.margin = Flag(
             name="margin",
-            type=FlagType(name=FlagTypeChoice.POSITION)
+            type=FlagType(FlagTypeChoice.POSITION)
         )
         self.padding = Flag(
             name="padding",
-            type=FlagType(name=FlagTypeChoice.POSITION)
+            type=FlagType(FlagTypeChoice.POSITION)
         )
         self.width = Flag(
             name="width",
-            type=FlagType(name=FlagTypeChoice.INT)
+            type=FlagType(FlagTypeChoice.INT)
         )
