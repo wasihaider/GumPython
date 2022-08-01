@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from gumpython.validators import Validator
+from gumpython.inputs import Input
 
 
 class FlagTypeChoice:
@@ -18,24 +18,10 @@ class FlagSeparatorChoice:
 
 
 @dataclass
-class FlagType:
-    name: str
-    validator: Validator = None
-
-    def __post_init__(self):
-        self.validator = Validator(self.name)
-
-
-@dataclass
 class Flag:
     name: str
-    type: FlagType
-    default: str = None
-    _value: str = None
-
-    def __post_init__(self):
-        if self.default:
-            self._value = self.default
+    type: str
+    _value: Input = None
 
     @property
     def flag(self):
@@ -46,19 +32,12 @@ class Flag:
         return self._value
 
     @value.setter
-    def value(self, value):
-        self._value = value
+    def value(self, value: Input):
+        if value.is_valid():
+            self._value = value
 
     def get_command(self):
-        if self.value:
-            if self.type.name == FlagTypeChoice.POSITION:
-                return f'{self.flag}="{str(self.value[0])} {str(self.value[1])}"'
-            if self.type.name == FlagTypeChoice.INT:
-                return f"{self.flag}={str(self.value)}"
-            return f'{self.flag}="{self.value}"'
-        if self.type.name == FlagTypeChoice.BOOL:
-            return self.flag
-        return None
+        return f"{self.flag}={self.value.compile()}"
 
     def __hash__(self):
         return hash((self.name,))
