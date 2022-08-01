@@ -3,3 +3,7 @@ from .style_flags import (
     StyleBorderFlag,
     StyleTextFlag
 )
+from .choose_flags import (
+    ChooseFlag,
+    ChooseCursorFlag,
+)

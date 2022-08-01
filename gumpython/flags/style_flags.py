@@ -15,7 +15,7 @@ class StyleBorderFlag(StyleFlag):
     def __init__(self):
         self.style = Flag(
             name="border",
-            type=FlagType(name=FlagTypeChoice.COLOR),
+            type=FlagType(name=FlagTypeChoice.BORDER),
             default="none"
         )
         self.background_color = SubFlag(
