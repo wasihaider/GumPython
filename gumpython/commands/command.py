@@ -9,5 +9,12 @@ class GumCommand:
     def run(self):
         run_command(self.command)
 
+    def add_argument(self, name):
+        self.command.append(name)
+
+    def _update_command(self, flag, value):
+        flag.value = value
+        self.command.extend(flag.get_command())
+
     def __str__(self):
         return " ".join(self.command)

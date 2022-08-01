@@ -1,4 +1,5 @@
 from .style_flags import (
     StyleFlag,
-    StyleBorderFlag
+    StyleBorderFlag,
+    StyleTextFlag
 )

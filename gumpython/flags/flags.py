@@ -6,7 +6,9 @@ class FlagTypeChoice:
     COLOR = "color"
     INT = "integer"
     STR = "string"
+    BOOL = "boolean"
     ALIGN = "alignment"
+    POSITION = "position"
 
 
 class FlagSeparatorChoice:
@@ -48,7 +50,13 @@ class Flag:
 
     def get_command(self):
         if self.value:
+            if self.type.name == FlagTypeChoice.POSITION:
+                return [self.flag, f'{" ".join([str(self.value[0]), str(self.value[1])])}']
+            if self.type.name == FlagTypeChoice.INT:
+                return [self.flag, str(self.value)]
             return [self.flag, self.value]
+        if self.type.name == FlagTypeChoice.BOOL:
+            return [self.flag]
         return None
 
 

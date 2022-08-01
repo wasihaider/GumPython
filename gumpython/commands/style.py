@@ -6,7 +6,7 @@ from gumpython.arguments import StyleArgument
 class Style(GumCommand):
     def __init__(self, text):
         super().__init__()
-        self.command.append("style")
+        self.add_argument("style")
         self.text = text
         self.arguments = StyleArgument()
 
@@ -15,14 +15,41 @@ class Style(GumCommand):
         self.command.append(self.text)
         run_command(self.command)
 
-    def add_border(self, style: str = None, background_color: str = None, foreground_color: str = None, ):
+    def border(self, style: str = None, foreground_color: str = None, background_color: str = None, ):
         border = self.arguments.border
         if style:
-            border.style.value = style
-            self.command.extend(border.style.get_command())
+            self._update_command(border.style, style)
         if background_color:
-            border.background_color.value = background_color
-            self.command.extend(border.background_color.get_command())
+            self._update_command(border.background_color, background_color)
         if foreground_color:
-            border.foreground_color.value = foreground_color
-            self.command.extend(border.foreground_color.get_command())
+            self._update_command(border.foreground_color, foreground_color)
+
+    def align(self, alignment: str, margin: tuple = (0, 0), padding: tuple = (0, 0)):
+        self._update_command(self.arguments.text.align, alignment)
+        self._update_command(self.arguments.text.margin, margin)
+        self._update_command(self.arguments.text.padding, padding)
+
+    def text_color(self, foreground, background=None):
+        self._update_command(self.arguments.text.foreground_color, foreground)
+        if background:
+            self._update_command(self.arguments.text.background_color, background)
+
+    def text_font(self, bold: bool = False, faint: bool = False, italic: bool = False, underline: bool = False,
+                  strikethrough: bool = False):
+        text_arg = self.arguments.text
+        if bold:
+            self._update_command(text_arg.bold, None)
+        if faint:
+            self._update_command(text_arg.faint, None)
+        if italic:
+            self._update_command(text_arg.italic, None)
+        if underline:
+            self._update_command(text_arg.underline, None)
+        if strikethrough:
+            self._update_command(text_arg.strikethrough, None)
+
+    def size(self, width: int, height: int = None):
+        text_arg = self.arguments.text
+        self._update_command(text_arg.width, width)
+        if height:
+            self._update_command(text_arg.height, height)

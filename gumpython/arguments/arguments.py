@@ -1,5 +1,6 @@
 from gumpython.flags import (
-    StyleBorderFlag
+    StyleBorderFlag,
+    StyleTextFlag
 )
 
 
@@ -10,3 +11,4 @@ class Argument:
 class StyleArgument(Argument):
     def __init__(self):
         self.border = StyleBorderFlag()
+        self.text = StyleTextFlag()
