@@ -1,1 +1,4 @@
-from gumpython.commands import Style
+from gumpython.commands import (
+    Style,
+    Choose
+)

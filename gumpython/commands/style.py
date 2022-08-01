@@ -1,5 +1,4 @@
 from .command import GumCommand
-from gumpython.run_command import run_command
 from gumpython.arguments import StyleArgument
 
 
