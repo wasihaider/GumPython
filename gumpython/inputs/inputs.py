@@ -1,9 +1,9 @@
 class Input:
     def is_valid(self):
-        return self.__validate()
+        return self._validate()
 
-    def __validate(self):
-        raise NotImplementedError
+    def _validate(self):
+        pass
 
     def compile(self):
-        raise NotImplementedError
+        pass

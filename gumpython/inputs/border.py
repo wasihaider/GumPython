@@ -1,4 +1,5 @@
 from .inputs import Input
+from gumpython.exceptions import BorderInputError
 
 
 class BorderType:
@@ -25,9 +26,10 @@ class Border(Input):
     def __init__(self, border_type):
         self.border_type = border_type
 
-    def __validate(self):
+    def _validate(self):
+        super(Border, self)._validate()
         if self.border_type not in all_border_types():
-            raise
+            raise BorderInputError(f"border must be one of {all_border_types()} but got '{self.border_type}'")
         return True
 
     def compile(self):
