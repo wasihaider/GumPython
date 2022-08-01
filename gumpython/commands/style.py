@@ -22,16 +22,19 @@ class Style(GumCommand):
             self._add_to_flag_set(border.background_color, background_color)
         if foreground_color:
             self._add_to_flag_set(border.foreground_color, foreground_color)
+        return self
 
     def align(self, alignment: str, margin: tuple = (0, 0), padding: tuple = (0, 0)):
         self._add_to_flag_set(self.arguments.text.align, alignment)
         self._add_to_flag_set(self.arguments.text.margin, margin)
         self._add_to_flag_set(self.arguments.text.padding, padding)
+        return self
 
     def text_color(self, foreground, background=None):
         self._add_to_flag_set(self.arguments.text.foreground_color, foreground)
         if background:
             self._add_to_flag_set(self.arguments.text.background_color, background)
+        return self
 
     def text_font(self, bold: bool = False, faint: bool = False, italic: bool = False, underline: bool = False,
                   strikethrough: bool = False):
@@ -46,9 +49,11 @@ class Style(GumCommand):
             self._add_to_flag_set(text_arg.underline, None)
         if strikethrough:
             self._add_to_flag_set(text_arg.strikethrough, None)
+        return self
 
     def size(self, width: int, height: int = None):
         text_arg = self.arguments.text
         self._add_to_flag_set(text_arg.width, width)
         if height:
             self._add_to_flag_set(text_arg.height, height)
+        return self
