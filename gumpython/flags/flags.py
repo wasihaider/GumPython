@@ -59,6 +59,9 @@ class Flag:
             return [self.flag]
         return None
 
+    def __hash__(self):
+        return hash((self.name,))
+
 
 @dataclass
 class SubFlag(Flag):
@@ -68,3 +71,6 @@ class SubFlag(Flag):
     @property
     def flag(self):
         return f"--{self.name}{self.separator}{self.sub_name}"
+
+    def __hash__(self):
+        return hash((self.name, self.sub_name))
