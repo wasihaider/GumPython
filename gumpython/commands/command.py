@@ -19,7 +19,7 @@ class GumCommand:
     def _compile_command(self):
         self.command = ["gum", self.argument]
         for flag in self.__flag_set:
-            self.command.extend(flag.get_command())
+            self.command.append(flag.get_command())
 
     def __str__(self):
         return " ".join(self.command)

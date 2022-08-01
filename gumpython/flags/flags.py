@@ -51,12 +51,12 @@ class Flag:
     def get_command(self):
         if self.value:
             if self.type.name == FlagTypeChoice.POSITION:
-                return [self.flag, f'{" ".join([str(self.value[0]), str(self.value[1])])}']
+                return f'{self.flag}="{str(self.value[0])} {str(self.value[1])}"'
             if self.type.name == FlagTypeChoice.INT:
-                return [self.flag, str(self.value)]
-            return [self.flag, self.value]
+                return f"{self.flag}={str(self.value)}"
+            return f"{self.flag}={self.value}"
         if self.type.name == FlagTypeChoice.BOOL:
-            return [self.flag]
+            return self.flag
         return None
 
     def __hash__(self):
