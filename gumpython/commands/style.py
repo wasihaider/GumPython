@@ -1,5 +1,8 @@
 from .command import GumCommand
 from gumpython.arguments import StyleArgument
+from gumpython.inputs import (
+    Border,
+)
 
 
 class Style(GumCommand):
@@ -16,7 +19,7 @@ class Style(GumCommand):
     def border(self, style: str = None, foreground_color: str = None, background_color: str = None, ):
         border = self.arguments.border
         if style:
-            self._add_to_flag_set(border.style, style)
+            self._add_to_flag_set(border.style, Border(style))
         if background_color:
             self._add_to_flag_set(border.background_color, background_color)
         if foreground_color:
