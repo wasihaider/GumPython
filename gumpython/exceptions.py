@@ -13,3 +13,7 @@ class InputError(GumPythonError):
 
 class BorderInputError(InputError):
     pass
+
+
+class ColorInputError(InputError):
+    pass
