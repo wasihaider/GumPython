@@ -15,6 +15,10 @@ class StyleArgumentError(ArgumentError):
     pass
 
 
+class ChooseArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 
