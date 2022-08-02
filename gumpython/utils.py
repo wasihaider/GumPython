@@ -1,7 +1,11 @@
 from gumpython.exceptions import ColorInputError
 from gumpython.inputs import (
     Border,
-    Color
+    Color,
+    StringInput,
+    IntegerInput,
+    Alignment,
+    Position,
 )
 
 
@@ -15,3 +19,19 @@ def get_color_object(value):
 
 def get_border_object(border_type):
     return Border(border_type)
+
+
+def get_string_input_object(value, flag_name):
+    return StringInput(value, flag_name)
+
+
+def get_integer_input_object(value, flag_name):
+    return IntegerInput(value, flag_name)
+
+
+def get_alignment_object(value, flag_name):
+    return Alignment(value, flag_name)
+
+
+def get_position_object(value, flag_name):
+    return Position(value, flag_name)

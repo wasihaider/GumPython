@@ -4,7 +4,11 @@ from .command import GumCommand
 from gumpython.arguments import StyleArgument
 from gumpython.utils import (
     get_color_object,
-    get_border_object
+    get_border_object,
+    get_alignment_object,
+    get_position_object,
+    get_string_input_object,
+    get_integer_input_object,
 )
 from gumpython.exceptions import StyleArgumentError
 
@@ -45,16 +49,18 @@ class Style(GumCommand):
             self._add_to_flag_set(border.background_color, get_color_object(background_color))
         return self
 
-    def align(self, alignment: str, margin: tuple = (0, 0), padding: tuple = (0, 0)):
-        self._add_to_flag_set(self.arguments.text.align, alignment)
-        self._add_to_flag_set(self.arguments.text.margin, margin)
-        self._add_to_flag_set(self.arguments.text.padding, padding)
+    def align(self, alignment: str, margin: tuple = None, padding: tuple = None):
+        self._add_to_flag_set(self.arguments.text.align, get_alignment_object(alignment, "text alignment"))
+        if margin
+            self._add_to_flag_set(self.arguments.text.margin, get_position_object(margin, "text margin"))
+        if padding:
+            self._add_to_flag_set(self.arguments.text.padding, get_position_object(padding, "text padding"))
         return self
 
     def text_color(self, foreground, background=None):
-        self._add_to_flag_set(self.arguments.text.foreground_color, foreground)
+        self._add_to_flag_set(self.arguments.text.foreground_color, get_color_object(foreground))
         if background:
-            self._add_to_flag_set(self.arguments.text.background_color, background)
+            self._add_to_flag_set(self.arguments.text.background_color, get_color_object(background))
         return self
 
     def text_font(self, bold: bool = False, faint: bool = False, italic: bool = False, underline: bool = False,
@@ -74,7 +80,7 @@ class Style(GumCommand):
 
     def size(self, width: int, height: int = None):
         text_arg = self.arguments.text
-        self._add_to_flag_set(text_arg.width, width)
+        self._add_to_flag_set(text_arg.width, get_integer_input_object(width, "text width"))
         if height:
-            self._add_to_flag_set(text_arg.height, height)
+            self._add_to_flag_set(text_arg.height, get_integer_input_object(height, "text height"))
         return self
