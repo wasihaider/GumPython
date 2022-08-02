@@ -1,20 +1,6 @@
 from dataclasses import dataclass
 from gumpython.inputs import Input
-
-
-class FlagTypeChoice:
-    COLOR = "color"
-    INT = "integer"
-    STR = "string"
-    BOOL = "boolean"
-    ALIGN = "alignment"
-    POSITION = "position"
-    BORDER = "border"
-
-
-class FlagSeparatorChoice:
-    DOT = "."
-    HYPHEN = "-"
+from gumpython.constants import FlagTypeChoice, FlagSeparatorChoice
 
 
 @dataclass
