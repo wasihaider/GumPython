@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+ensure_newline_before_comments = true
+line_length = 79
+default_section = "THIRDPARTY"
+known_third_party = []
+known_first_party = []
+skip_glob = "venv"
