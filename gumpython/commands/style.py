@@ -49,12 +49,12 @@ class Style(GumCommand):
         return self
 
     def align(self, alignment: str, margin: tuple = None, padding: tuple = None):
-        self._add_to_flag_set(self.arguments.text.align, get_alignment_object(alignment, "text alignment"))
+        text = self.arguments.text
+        self._add_to_flag_set(text.align, get_alignment_object(alignment, text.align.display_name))
         if margin:
-            margin_pos = get_position_object(margin, "text margin")
-            self._add_to_flag_set(self.arguments.text.margin, margin_pos)
+            self._add_to_flag_set(text.margin, get_position_object(margin, text.margin.display_name))
         if padding:
-            self._add_to_flag_set(self.arguments.text.padding, get_position_object(padding, "text padding"))
+            self._add_to_flag_set(text.padding, get_position_object(padding, text.padding.display_name))
         return self
 
     def text_color(self, foreground, background=None):
@@ -80,7 +80,7 @@ class Style(GumCommand):
 
     def size(self, width: int, height: int = None):
         text_arg = self.arguments.text
-        self._add_to_flag_set(text_arg.width, get_integer_input_object(width, "text width"))
+        self._add_to_flag_set(text_arg.width, get_integer_input_object(width, text_arg.width.display_name))
         if height:
-            self._add_to_flag_set(text_arg.height, get_integer_input_object(height, "text height"))
+            self._add_to_flag_set(text_arg.height, get_integer_input_object(height, text_arg.height.display_name))
         return self
