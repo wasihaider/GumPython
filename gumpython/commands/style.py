@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, List
 
 from .command import GumCommand
 from gumpython.arguments import StyleArgument
@@ -6,18 +6,33 @@ from gumpython.utils import (
     get_color_object,
     get_border_object
 )
+from gumpython.exceptions import StyleArgumentError
 
 
 class Style(GumCommand):
-    def __init__(self, text):
+    def __init__(self, text: Union[str, List[str]]):
         super().__init__()
         self.argument = "style"
         self.text = text
+        self._validate_text_argument()
         self.arguments = StyleArgument()
 
     def _compile_command(self):
         super(Style, self)._compile_command()
-        self.command.append(self.text)
+        if isinstance(self.text, str):
+            self.command.append(self.text)
+        if isinstance(self.text, list):
+            self.command.extend(self.text)
+
+    def _validate_text_argument(self):
+        if isinstance(self.text, str):
+            return True
+        if isinstance(self.text, list):
+            for t in self.text:
+                if not isinstance(t, str):
+                    raise StyleArgumentError(f"{t} is not a string.")
+            return True
+        raise StyleArgumentError(f"Expected 'str' or List[str] but '{type(self.text).__name__}' is given.")
 
     def border(self, style: str = None, foreground_color: Union[str, tuple] = None,
                background_color: Union[str, tuple] = None, ):

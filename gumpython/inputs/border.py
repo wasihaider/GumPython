@@ -1,6 +1,6 @@
 from .inputs import Input
 from gumpython.exceptions import BorderInputError
-from help_inputs.border import all_border_types
+from .help_inputs.border_types import all_border_types
 
 
 class Border(Input):
@@ -12,7 +12,8 @@ class Border(Input):
 
     def _validate(self):
         if not isinstance(self.border_type, str):
-            raise BorderInputError(f"'str' input expected '{type(self.border_type).__name__}' given")
+            raise BorderInputError(
+                f"'str' input expected for border type but '{type(self.border_type).__name__}' is given")
         if self.border_type not in all_border_types():
             raise BorderInputError(f"border must be one of {all_border_types()} but got '{self.border_type}'")
         return True

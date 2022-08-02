@@ -7,6 +7,14 @@ class GumPythonError(Exception):
         return f"{self.message}"
 
 
+class ArgumentError(GumPythonError):
+    pass
+
+
+class StyleArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 

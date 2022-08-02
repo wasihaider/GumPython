@@ -16,7 +16,7 @@ class Color(Input):
             return self._validate_hex()
         if self.rgb:
             return self._validate_rgb()
-        raise ColorInputError("Expected hex or rgb value but None given.")
+        raise ColorInputError("Expected hex or rgb value for color but 'None' given.")
 
     def _validate_hex(self):
         if not isinstance(self.hex, str):
@@ -44,6 +44,6 @@ class Color(Input):
 
     def compile(self):
         if self.hex:
-            return f'"{self.hex}"'
+            return self.hex
         if self.rgb:
             return self._convert_rgb_to_hex()
