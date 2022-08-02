@@ -25,3 +25,11 @@ class BorderInputError(InputError):
 
 class ColorInputError(InputError):
     pass
+
+
+class PositionInputError(InputError):
+    pass
+
+
+class AlignmentInputError(InputError):
+    pass
