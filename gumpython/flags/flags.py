@@ -8,6 +8,7 @@ class Flag:
     name: str
     type: str
     _value: Input = None
+    _display_name: str = None
 
     @property
     def flag(self):
@@ -22,6 +23,10 @@ class Flag:
         if value.is_valid():
             print(f"The value is valid for {self.name}")
             self._value = value
+
+    @property
+    def display_name(self):
+        return self.name
 
     def get_command(self):
         return f"{self.flag}={self.value.compile()}"
@@ -38,6 +43,10 @@ class SubFlag(Flag):
     @property
     def flag(self):
         return f"--{self.name}{self.separator}{self.sub_name}"
+
+    @property
+    def display_name(self):
+        return f"{self.name} {self.sub_name}"
 
     def __hash__(self):
         return hash((self.name, self.sub_name))
