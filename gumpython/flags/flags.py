@@ -20,6 +20,7 @@ class Flag:
     @value.setter
     def value(self, value: Input):
         if value.is_valid():
+            print(f"The value is valid for {self.name}")
             self._value = value
 
     def get_command(self):

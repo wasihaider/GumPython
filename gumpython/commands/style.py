@@ -7,7 +7,6 @@ from gumpython.utils import (
     get_border_object,
     get_alignment_object,
     get_position_object,
-    get_string_input_object,
     get_integer_input_object,
 )
 from gumpython.exceptions import StyleArgumentError
@@ -51,8 +50,9 @@ class Style(GumCommand):
 
     def align(self, alignment: str, margin: tuple = None, padding: tuple = None):
         self._add_to_flag_set(self.arguments.text.align, get_alignment_object(alignment, "text alignment"))
-        if margin
-            self._add_to_flag_set(self.arguments.text.margin, get_position_object(margin, "text margin"))
+        if margin:
+            margin_pos = get_position_object(margin, "text margin")
+            self._add_to_flag_set(self.arguments.text.margin, margin_pos)
         if padding:
             self._add_to_flag_set(self.arguments.text.padding, get_position_object(padding, "text padding"))
         return self

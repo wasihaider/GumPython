@@ -1,4 +1,4 @@
-from inputs import Input
+from .inputs import Input
 from gumpython.exceptions import PositionInputError
 
 
@@ -8,7 +8,7 @@ class Position(Input):
         self.flag_name = flag_name
 
     def is_valid(self):
-        self._validate()
+        return self._validate()
 
     def _validate(self):
         if not isinstance(self.value, tuple):
@@ -21,4 +21,4 @@ class Position(Input):
         return True
 
     def compile(self):
-        return f'"{self.value[0]} {self.value[1]}"'
+        return f"{self.value[0]} {self.value[1]}"
