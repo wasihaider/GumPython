@@ -4,8 +4,8 @@ from gumpython.exceptions import ColorInputError
 
 
 class Color(Input):
-    def __init__(self, hex: str = None, rgb: tuple = None):
-        self.hex = hex
+    def __init__(self, hex_code: str = None, rgb: tuple = None):
+        self.hex = hex_code
         self.rgb = rgb
 
     def is_valid(self):

@@ -1,7 +1,10 @@
+from typing import Union
+
 from .command import GumCommand
 from gumpython.arguments import StyleArgument
-from gumpython.inputs import (
-    Border,
+from gumpython.utils import (
+    get_color_object,
+    get_border_object
 )
 
 
@@ -16,14 +19,15 @@ class Style(GumCommand):
         super(Style, self)._compile_command()
         self.command.append(self.text)
 
-    def border(self, style: str = None, foreground_color: str = None, background_color: str = None, ):
+    def border(self, style: str = None, foreground_color: Union[str, tuple] = None,
+               background_color: Union[str, tuple] = None, ):
         border = self.arguments.border
         if style:
-            self._add_to_flag_set(border.style, Border(style))
-        if background_color:
-            self._add_to_flag_set(border.background_color, background_color)
+            self._add_to_flag_set(border.style, get_border_object(style))
         if foreground_color:
-            self._add_to_flag_set(border.foreground_color, foreground_color)
+            self._add_to_flag_set(border.foreground_color, get_color_object(foreground_color))
+        if background_color:
+            self._add_to_flag_set(border.background_color, get_color_object(background_color))
         return self
 
     def align(self, alignment: str, margin: tuple = (0, 0), padding: tuple = (0, 0)):

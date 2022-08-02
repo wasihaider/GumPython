@@ -1,25 +1,6 @@
 from .inputs import Input
 from gumpython.exceptions import BorderInputError
-
-
-class BorderType:
-    NONE = "none"
-    HIDDEN = "hidden"
-    NORMAL = "normal"
-    ROUNDED = "rounded"
-    THICK = "thick"
-    DOUBLE = "double"
-
-
-def all_border_types():
-    return [
-        BorderType.NONE,
-        BorderType.HIDDEN,
-        BorderType.NORMAL,
-        BorderType.ROUNDED,
-        BorderType.THICK,
-        BorderType.DOUBLE,
-    ]
+from help_inputs.border import all_border_types
 
 
 class Border(Input):

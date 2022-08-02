@@ -33,7 +33,6 @@ class Flag:
 
     @value.setter
     def value(self, value: Input):
-        print(type(value))
         if value.is_valid():
             self._value = value
 
