@@ -1,4 +1,1 @@
-from .arguments import (
-    StyleArgument,
-    ChooseArgument
-)
+from .arguments import ChooseArgument, StyleArgument

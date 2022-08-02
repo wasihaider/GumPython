@@ -1,8 +1,4 @@
-from gumpython.flags import (
-    StyleBorderFlag,
-    StyleTextFlag,
-    ChooseCursorFlag
-)
+from gumpython.flags import ChooseCursorFlag, StyleBorderFlag, StyleTextFlag
 
 
 class Argument:

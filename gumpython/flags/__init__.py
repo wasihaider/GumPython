@@ -1,9 +1,2 @@
-from .style_flags import (
-    StyleFlag,
-    StyleBorderFlag,
-    StyleTextFlag
-)
-from .choose_flags import (
-    ChooseFlag,
-    ChooseCursorFlag,
-)
+from .choose_flags import ChooseCursorFlag, ChooseFlag
+from .style_flags import StyleBorderFlag, StyleFlag, StyleTextFlag

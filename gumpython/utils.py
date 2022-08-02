@@ -1,11 +1,11 @@
 from gumpython.exceptions import ColorInputError
 from gumpython.inputs import (
+    Alignment,
     Border,
     Color,
-    StringInput,
     IntegerInput,
-    Alignment,
     Position,
+    StringInput,
 )
 
 
@@ -14,7 +14,9 @@ def get_color_object(value):
         return Color(hex_code=value)
     if isinstance(value, tuple):
         return Color(rgb=value)
-    raise ColorInputError(f"Expected 'str' or 'tuple' input for color but '{type(value).__name__}' given.")
+    raise ColorInputError(
+        f"Expected 'str' or 'tuple' input for color but '{type(value).__name__}' given."
+    )
 
 
 def get_border_object(border_type):

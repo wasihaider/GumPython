@@ -1,5 +1,6 @@
-from .inputs import Input
 from gumpython.exceptions import InputError
+
+from .inputs import Input
 
 
 class IntegerInput(Input):
@@ -13,7 +14,9 @@ class IntegerInput(Input):
     def _validate(self):
         if isinstance(self.value, int):
             return True
-        raise InputError(f"'int' input expected for {self.flag_name} but given '{type(self.value).__name__}'")
+        raise InputError(
+            f"'int' input expected for {self.flag_name} but given '{type(self.value).__name__}'"
+        )
 
     def compile(self):
         return self.value
@@ -30,7 +33,9 @@ class StringInput(Input):
     def _validate(self):
         if isinstance(self.value, str):
             return True
-        raise InputError(f"'str' input expected for {self.flag_name} but given '{type(self.value).__name__}'")
+        raise InputError(
+            f"'str' input expected for {self.flag_name} but given '{type(self.value).__name__}'"
+        )
 
     def compile(self):
         return self.value

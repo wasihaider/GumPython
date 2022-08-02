@@ -1,6 +1,7 @@
-from .inputs import Input
 from gumpython.exceptions import AlignmentInputError
+
 from .help_inputs.alignment_types import all_alignment_types
+from .inputs import Input
 
 
 class Alignment(Input):
@@ -14,10 +15,12 @@ class Alignment(Input):
     def _validate(self):
         if not isinstance(self.alignment_type, str):
             raise AlignmentInputError(
-                f"'str' expected for {self.flag_name} but '{type(self.alignment_type).__name__}' is given.")
+                f"'str' expected for {self.flag_name} but '{type(self.alignment_type).__name__}' is given."
+            )
         if self.alignment_type not in all_alignment_types():
             raise AlignmentInputError(
-                f"Alignment must be one of {all_alignment_types()} but '{self.alignment_type}' is given.")
+                f"Alignment must be one of {all_alignment_types()} but '{self.alignment_type}' is given."
+            )
         return True
 
     def compile(self):

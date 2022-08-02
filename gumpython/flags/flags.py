@@ -1,6 +1,6 @@
 from dataclasses import dataclass
+
 from gumpython.inputs import Input
-from gumpython.constants import FlagTypeChoice, FlagSeparatorChoice
 
 
 @dataclass
