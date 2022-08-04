@@ -1,5 +1,5 @@
-from gumpython.run_command import run_command
 from gumpython.constants import FlagTypeChoice
+from gumpython.run_command import run_command
 
 
 class GumCommand:

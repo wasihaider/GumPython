@@ -1,6 +1,6 @@
-from .inputs import Input
+from .alignment import Alignment
+from .basic import IntegerInput, StringInput
 from .border import Border
 from .color import Color
-from .basic import StringInput, IntegerInput
-from .alignment import Alignment
+from .inputs import Input
 from .position import Position
