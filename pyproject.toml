@@ -11,3 +11,20 @@ default_section = "THIRDPARTY"
 known_third_party = []
 known_first_party = []
 skip_glob = "venv"
+
+[tool.poetry]
+name = "gumpython"
+version = "0.1.0"
+description = "A python library for gum cli"
+authors = ["Wasi Haider <wsi.haidr@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
