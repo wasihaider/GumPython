@@ -16,6 +16,7 @@ skip_glob = "venv"
 name = "gumpython"
 version = "0.1.0"
 description = "A python library for gum cli"
+readme = "README.md"
 authors = ["Wasi Haider <wsi.haidr@gmail.com>"]
 license = "MIT"
 
