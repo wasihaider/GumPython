@@ -1,4 +1,6 @@
-from .flags import Flag, FlagSeparatorChoice, FlagTypeChoice, SubFlag
+from gumpython.constants import FlagSeparatorChoice, FlagTypeChoice
+
+from .flags import Flag, SubFlag
 
 
 class StyleFlag:
