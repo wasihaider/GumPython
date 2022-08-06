@@ -5,24 +5,37 @@ from gumpython.exceptions import ColorInputError
 from .inputs import Input
 
 
+def is_valid_rgb(rgb: tuple):
+    if isinstance(rgb, tuple):
+        raise ColorInputError(
+            f"rgb should be of type 'tuple' but '{type(rgb).__name__}' given."
+        )
+    if len(tuple) != 3:
+        raise ColorInputError(f"Expected (r, g, b) but given {rgb}")
+    if rgb:
+        for code in rgb:
+            if code < 0 or code > 255:
+                raise ColorInputError(f"{rgb} is not a valid rgb color code.")
+        return True
+
+
+def convert_rgb_to_hex(rgb: tuple):
+    return f"#{[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
+
+
 class Color(Input):
-    def __init__(self, hex_code: str = None, rgb: tuple = None):
+    def __init__(self, hex_code: str = None):
         self.hex = hex_code
-        self.rgb = rgb
+
+    @classmethod
+    def from_rgb(cls, rgb: tuple):
+        if is_valid_rgb(rgb):
+            return cls(convert_rgb_to_hex(rgb))
 
     def is_valid(self):
         return self._validate()
 
     def _validate(self):
-        if self.hex:
-            return self._validate_hex()
-        if self.rgb:
-            return self._validate_rgb()
-        raise ColorInputError(
-            "Expected hex or rgb value for color but 'None' given."
-        )
-
-    def _validate_hex(self):
         if not isinstance(self.hex, str):
             raise ColorInputError(
                 f"Hex should be a string but '{type(self.hex).__name__}' given."
@@ -33,24 +46,6 @@ class Color(Input):
             return True
         else:
             raise ColorInputError(f"{self.hex} is not a valid hex color code")
-
-    def _validate_rgb(self):
-        if isinstance(self.rgb, tuple):
-            raise ColorInputError(
-                f"rgb should be of type 'tuple' but '{type(self.rgb).__name__}' given."
-            )
-        if len(tuple) != 3:
-            raise ColorInputError(f"Expected (r, g, b) but given {self.rgb}")
-        if self.rgb:
-            for code in self.rgb:
-                if code < 0 or code > 255:
-                    raise ColorInputError(
-                        f"{self.rgb} is not a valid rgb color code."
-                    )
-            return True
-
-    def _convert_rgb_to_hex(self):
-        return f"#{self.rgb[0]:02x}{self.rgb[1]:02x}{self.rgb[2]:02x}"
 
     def compile(self):
         if self.hex:
