@@ -20,7 +20,7 @@ def is_valid_rgb(rgb: tuple):
 
 
 def convert_rgb_to_hex(rgb: tuple):
-    return f"#{[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
+    return f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
 
 
 class Color(Input):
