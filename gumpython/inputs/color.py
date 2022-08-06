@@ -20,6 +20,14 @@ def is_valid_rgb(rgb: tuple):
 
 
 def convert_rgb_to_hex(rgb: tuple):
+    """
+    It takes a tuple of three integers, representing the red, green, and blue values of a color, and returns a string
+    containing the hexadecimal representation of that color
+
+    :param rgb: tuple
+    :type rgb: tuple
+    :return: A string in the format of a hexadecimal color code.
+    """
     return f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
 
 
