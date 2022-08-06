@@ -6,7 +6,7 @@ from .inputs import Input
 
 
 def is_valid_rgb(rgb: tuple):
-    if isinstance(rgb, tuple):
+    if not isinstance(rgb, tuple):
         raise ColorInputError(
             f"rgb should be of type 'tuple' but '{type(rgb).__name__}' given."
         )
