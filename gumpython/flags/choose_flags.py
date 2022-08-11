@@ -150,3 +150,13 @@ class ChooseSelectedFlag(ChooseFlag):
 
     def get_flag_name(self):
         return "selected"
+
+
+class ChooseListFlag:
+    def __init__(self):
+        self.height = Flag(name="height", type=FlagTypeChoice.INT)
+        self.limit = Flag(name="limit", type=FlagTypeChoice.INT)
+        self.no_limit = Flag(name="no-limit", type=FlagTypeChoice.BOOL)
+        self.unselected_prefix = Flag(
+            name="unselected-prefix", type=FlagTypeChoice.STR
+        )
