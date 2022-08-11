@@ -11,18 +11,18 @@ from gumpython.inputs import (
 from .constants import FlagTypeChoice
 
 
-def get_color_object(value):
+def get_color_object(value, flag_name):
     if isinstance(value, str):
-        return Color(hex_code=value)
+        return Color(hex_code=value, flag_name=flag_name)
     if isinstance(value, tuple):
-        return Color.from_rgb(value)
+        return Color.from_rgb(value, flag_name=flag_name)
     raise ColorInputError(
         f"Expected 'str' or 'tuple' input for color but '{type(value).__name__}' given."
     )
 
 
-def get_border_object(border_type):
-    return Border(border_type)
+def get_border_object(border_type, flag_name):
+    return Border(border_type, flag_name)
 
 
 def get_string_input_object(value, flag_name):

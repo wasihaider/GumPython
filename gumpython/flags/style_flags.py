@@ -9,14 +9,14 @@ class StyleFlag:
 
 class StyleBorderFlag(StyleFlag):
     def __init__(self):
-        self.style = Flag(name="border", type=FlagTypeChoice.BORDER)
-        self.background_color = SubFlag(
+        self.border = Flag(name="border", type=FlagTypeChoice.BORDER)
+        self.border_background = SubFlag(
             name="border",
             type=FlagTypeChoice.COLOR,
             sub_name="background",
             separator=FlagSeparatorChoice.HYPHEN,
         )
-        self.foreground_color = SubFlag(
+        self.border_foreground = SubFlag(
             name="border",
             type=FlagTypeChoice.COLOR,
             sub_name="foreground",
@@ -27,12 +27,8 @@ class StyleBorderFlag(StyleFlag):
 class StyleTextFlag(StyleFlag):
     def __init__(self):
         self.align = Flag(name="align", type=FlagTypeChoice.ALIGN)
-        self.background_color = Flag(
-            name="background", type=FlagTypeChoice.COLOR
-        )
-        self.foreground_color = Flag(
-            name="foreground", type=FlagTypeChoice.COLOR
-        )
+        self.background = Flag(name="background", type=FlagTypeChoice.COLOR)
+        self.foreground = Flag(name="foreground", type=FlagTypeChoice.COLOR)
         self.bold = Flag(name="bold", type=FlagTypeChoice.BOOL)
         self.faint = Flag(name="faint", type=FlagTypeChoice.BOOL)
         self.height = Flag(name="height", type=FlagTypeChoice.INT)
