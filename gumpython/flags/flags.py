@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
-from gumpython.inputs import Input
+from gumpython.utils import get_input_object
 
 
 @dataclass
 class Flag:
     name: str
     type: str
-    _value: Input = None
+    _value = None
     _display_name: str = None
 
     @property
@@ -19,9 +19,10 @@ class Flag:
         return self._value
 
     @value.setter
-    def value(self, value: Input):
-        if value.is_valid():
-            self._value = value
+    def value(self, value):
+        input_obj = get_input_object(self.type, value, self.display_name)
+        if input_obj.is_valid():
+            self._value = input_obj
 
     @property
     def display_name(self):
