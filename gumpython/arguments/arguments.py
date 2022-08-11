@@ -3,6 +3,10 @@ from gumpython.flags import (
     ChooseItemFlag,
     ChooseListFlag,
     ChooseSelectedFlag,
+    ConfirmGeneralFlag,
+    ConfirmPromptFlag,
+    ConfirmSelectedFlag,
+    ConfirmUnselectedFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -24,3 +28,11 @@ class ChooseArgument(Argument):
         self.item = ChooseItemFlag()
         self.selected = ChooseSelectedFlag()
         self.list = ChooseListFlag()
+
+
+class ConfirmArguments(Argument):
+    def __init__(self):
+        self.general = ConfirmGeneralFlag()
+        self.prompt = ConfirmPromptFlag()
+        self.selected = ConfirmSelectedFlag()
+        self.unselected = ConfirmUnselectedFlag()

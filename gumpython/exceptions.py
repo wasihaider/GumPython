@@ -23,6 +23,10 @@ class ChooseArgumentError(ArgumentError):
     pass
 
 
+class ConfirmArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 
