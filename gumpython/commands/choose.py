@@ -173,3 +173,19 @@ class Choose(GumCommand):
     def selected_size(self, width: int = None, height: int = None):
         self._size(self.arguments.selected, width, height)
         return self
+
+    def list_height(self, height: int):
+        self._add_to_flag_set(self.arguments.list.height, height)
+        return self
+
+    def limit(self, limit: int):
+        self._add_to_flag_set(self.arguments.list.limit, limit)
+        return self
+
+    def no_limit(self):
+        self._add_to_flag_set(self.arguments.list.no_limit, True)
+        return self
+
+    def unselected_prefix(self, prefix: str):
+        self._add_to_flag_set(self.arguments.list.unselected_prefix, prefix)
+        return self
