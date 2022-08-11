@@ -136,3 +136,17 @@ class ChooseItemFlag(ChooseFlag):
 
     def get_flag_name(self):
         return "item"
+
+
+class ChooseSelectedFlag(ChooseFlag):
+    def __init__(self):
+        super(ChooseSelectedFlag, self).__init__()
+        self.prefix = SubFlag(
+            name=self.flag_name,
+            type=FlagTypeChoice.STR,
+            sub_name="prefix",
+            separator=FlagSeparatorChoice.HYPHEN,
+        )
+
+    def get_flag_name(self):
+        return "selected"

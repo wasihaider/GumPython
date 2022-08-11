@@ -122,3 +122,54 @@ class Choose(GumCommand):
     def items_size(self, width: int = None, height: int = None):
         self._size(self.arguments.item, width, height)
         return self
+
+    def selected_prefix(self, prefix: str):
+        self._add_to_flag_set(self.arguments.selected.prefix, prefix)
+        return self
+
+    def selected_align(
+        self, alignment: str, margin: tuple = None, padding: tuple = None
+    ):
+        self._align(self.arguments.selected, alignment, margin, padding)
+        return self
+
+    def selected_color(
+        self, foreground_color: str, background_color: str = None
+    ):
+        self._color(
+            self.arguments.selected, foreground_color, background_color
+        )
+        return self
+
+    def selected_style(
+        self,
+        bold: bool = False,
+        italic: bool = False,
+        faint: bool = False,
+        underline: bool = False,
+        strikethrough: bool = False,
+    ):
+        self._font_style(
+            self.arguments.selected,
+            bold,
+            italic,
+            faint,
+            underline,
+            strikethrough,
+        )
+        return self
+
+    def selected_border(
+        self,
+        style: str,
+        foreground_color: str = None,
+        background_color: str = None,
+    ):
+        self._border(
+            self.arguments.selected, style, foreground_color, background_color
+        )
+        return self
+
+    def selected_size(self, width: int = None, height: int = None):
+        self._size(self.arguments.selected, width, height)
+        return self
