@@ -50,8 +50,8 @@ class GumCommand:
         self,
         flag,
         bold: bool = False,
-        faint: bool = False,
         italic: bool = False,
+        faint: bool = False,
         underline: bool = False,
         strikethrough: bool = False,
     ):

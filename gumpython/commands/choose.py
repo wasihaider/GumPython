@@ -77,5 +77,48 @@ class Choose(GumCommand):
         return self
 
     def cursor_size(self, width: int = None, height: int = None):
-        self._size(self.arguments, width, height)
+        self._size(self.arguments.cursor, width, height)
+        return self
+
+    def items_align(
+        self, alignment: str, margin: tuple = None, padding: tuple = None
+    ):
+        self._align(self.arguments.item, alignment, margin, padding)
+        return self
+
+    def items_color(self, foreground_color: str, background_color: str = None):
+        self._color(self.arguments.item, foreground_color, background_color)
+        return self
+
+    def items_style(
+        self,
+        bold: bool = False,
+        italic: bool = False,
+        faint: bool = False,
+        underline: bool = False,
+        strikethrough: bool = False,
+    ):
+        self._font_style(
+            self.arguments.item,
+            bold,
+            italic,
+            faint,
+            underline,
+            strikethrough,
+        )
+        return self
+
+    def items_border(
+        self,
+        style: str,
+        foreground_color: str = None,
+        background_color: str = None,
+    ):
+        self._border(
+            self.arguments.item, style, foreground_color, background_color
+        )
+        return self
+
+    def items_size(self, width: int = None, height: int = None):
+        self._size(self.arguments.item, width, height)
         return self
