@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from gumpython.inputs import Input
 from gumpython.utils import get_input_object
 
 
@@ -7,7 +8,7 @@ from gumpython.utils import get_input_object
 class Flag:
     name: str
     type: str
-    _value = None
+    _value: Input = None
     _display_name: str = None
 
     @property
