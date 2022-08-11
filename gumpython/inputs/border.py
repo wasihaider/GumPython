@@ -5,8 +5,9 @@ from .inputs import Input
 
 
 class Border(Input):
-    def __init__(self, border_type):
+    def __init__(self, border_type, flag_name):
         self.border_type = border_type
+        self.flag_name = flag_name
 
     def is_valid(self):
         return self._validate()
@@ -14,7 +15,7 @@ class Border(Input):
     def _validate(self):
         if not isinstance(self.border_type, str):
             raise BorderInputError(
-                f"'str' input expected for border type but '{type(self.border_type).__name__}' is given"
+                f"'str' input expected for {self.flag_name} border type but '{type(self.border_type).__name__}' is given"
             )
         if self.border_type not in all_border_types():
             raise BorderInputError(
