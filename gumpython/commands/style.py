@@ -2,13 +2,6 @@ from typing import List, Union
 
 from gumpython.arguments import StyleArgument
 from gumpython.exceptions import StyleArgumentError
-from gumpython.utils import (
-    get_alignment_object,
-    get_border_object,
-    get_color_object,
-    get_integer_input_object,
-    get_position_object,
-)
 
 from .command import GumCommand
 
@@ -46,48 +39,19 @@ class Style(GumCommand):
         foreground_color: Union[str, tuple] = None,
         background_color: Union[str, tuple] = None,
     ):
-        border = self.arguments.border
-        if style:
-            self._add_to_flag_set(border.style, get_border_object(style))
-        if foreground_color:
-            self._add_to_flag_set(
-                border.foreground_color, get_color_object(foreground_color)
-            )
-        if background_color:
-            self._add_to_flag_set(
-                border.background_color, get_color_object(background_color)
-            )
+        self._border(
+            self.arguments.border, style, foreground_color, background_color
+        )
         return self
 
     def align(
         self, alignment: str, margin: tuple = None, padding: tuple = None
     ):
-        text = self.arguments.text
-        self._add_to_flag_set(
-            text.align,
-            get_alignment_object(alignment, text.align.display_name),
-        )
-        if margin:
-            self._add_to_flag_set(
-                text.margin,
-                get_position_object(margin, text.margin.display_name),
-            )
-        if padding:
-            self._add_to_flag_set(
-                text.padding,
-                get_position_object(padding, text.padding.display_name),
-            )
+        self._align(self.arguments.text, alignment, margin, padding)
         return self
 
     def text_color(self, foreground, background=None):
-        self._add_to_flag_set(
-            self.arguments.text.foreground_color, get_color_object(foreground)
-        )
-        if background:
-            self._add_to_flag_set(
-                self.arguments.text.background_color,
-                get_color_object(background),
-            )
+        self._color(self.arguments.text, foreground, background)
         return self
 
     def text_font(
@@ -98,28 +62,11 @@ class Style(GumCommand):
         underline: bool = False,
         strikethrough: bool = False,
     ):
-        text_arg = self.arguments.text
-        if bold:
-            self._add_to_flag_set(text_arg.bold, None)
-        if faint:
-            self._add_to_flag_set(text_arg.faint, None)
-        if italic:
-            self._add_to_flag_set(text_arg.italic, None)
-        if underline:
-            self._add_to_flag_set(text_arg.underline, None)
-        if strikethrough:
-            self._add_to_flag_set(text_arg.strikethrough, None)
+        self._font_style(
+            self.arguments.text, bold, faint, italic, underline, strikethrough
+        )
         return self
 
     def size(self, width: int, height: int = None):
-        text_arg = self.arguments.text
-        self._add_to_flag_set(
-            text_arg.width,
-            get_integer_input_object(width, text_arg.width.display_name),
-        )
-        if height:
-            self._add_to_flag_set(
-                text_arg.height,
-                get_integer_input_object(height, text_arg.height.display_name),
-            )
+        self._size(self.arguments.text, width, height)
         return self

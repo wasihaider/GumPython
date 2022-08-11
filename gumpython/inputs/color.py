@@ -32,13 +32,14 @@ def convert_rgb_to_hex(rgb: tuple):
 
 
 class Color(Input):
-    def __init__(self, hex_code: str = None):
+    def __init__(self, hex_code: str = None, flag_name: str = None):
         self.hex = hex_code
+        self.flag_name = flag_name
 
     @classmethod
-    def from_rgb(cls, rgb: tuple):
+    def from_rgb(cls, rgb: tuple, flag_name):
         if is_valid_rgb(rgb):
-            return cls(convert_rgb_to_hex(rgb))
+            return cls(convert_rgb_to_hex(rgb), flag_name)
 
     def is_valid(self):
         return self._validate()
