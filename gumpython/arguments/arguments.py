@@ -1,4 +1,9 @@
-from gumpython.flags import ChooseCursorFlag, StyleBorderFlag, StyleTextFlag
+from gumpython.flags import (
+    ChooseCursorFlag,
+    ChooseItemFlag,
+    StyleBorderFlag,
+    StyleTextFlag,
+)
 
 
 class Argument:
@@ -14,3 +19,4 @@ class StyleArgument(Argument):
 class ChooseArgument(Argument):
     def __init__(self):
         self.cursor = ChooseCursorFlag()
+        self.item = ChooseItemFlag()

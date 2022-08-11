@@ -128,3 +128,11 @@ class ChooseCursorFlag(ChooseFlag):
 
     def get_flag_name(self):
         return "cursor"
+
+
+class ChooseItemFlag(ChooseFlag):
+    def __init__(self):
+        super(ChooseItemFlag, self).__init__()
+
+    def get_flag_name(self):
+        return "item"
