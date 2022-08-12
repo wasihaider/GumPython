@@ -10,4 +10,11 @@ from .confirm_flags import (
     ConfirmSelectedFlag,
     ConfirmUnselectedFlag,
 )
+from .filter_flags import (
+    FilterGeneralFlag,
+    FilterIndicatorFlag,
+    FilterMatchFlag,
+    FilterPromptFlag,
+    FilterTextFlag,
+)
 from .style_flags import StyleBorderFlag, StyleFlag, StyleTextFlag
