@@ -6,7 +6,7 @@ from .exceptions import GumNotFoundError, GumPythonError
 def run_command(cmd):
     try:
         response = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
-        print(response.stdout)
+        return response.stdout
     except FileNotFoundError as fe:
         if "No such file or directory: 'gum'" in str(fe):
             raise GumNotFoundError(

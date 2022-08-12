@@ -7,10 +7,14 @@ class GumCommand:
         self.command = None
         self.argument = None
         self.__flag_set = set()
+        self.returning = False
 
     def run(self):
         self._compile_command()
-        run_command(self.command)
+        response = run_command(self.command)
+        if self.returning:
+            return response
+        print(response)
 
     def _add_to_flag_set(self, flag, value):
         if flag.type != FlagTypeChoice.BOOL:
