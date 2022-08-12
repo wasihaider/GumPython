@@ -10,6 +10,7 @@ class Choose(GumCommand):
     def __init__(self, item_list: List[str]):
         super().__init__()
         self.argument = "choose"
+        self.returning = True
         self.item_list = item_list
         self._validate_item_list()
         self.arguments = ChooseArgument()
@@ -27,6 +28,10 @@ class Choose(GumCommand):
     def _compile_command(self):
         super(Choose, self)._compile_command()
         self.command.extend(self.item_list)
+
+    def run(self):
+        response = super(Choose, self).run()
+        return response.split("\n")[:-1]
 
     def cursor(self, cursor_text: str, prefix: str = None):
         cursor_arg = self.arguments.cursor
