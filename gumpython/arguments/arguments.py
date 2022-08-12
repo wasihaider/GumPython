@@ -7,6 +7,11 @@ from gumpython.flags import (
     ConfirmPromptFlag,
     ConfirmSelectedFlag,
     ConfirmUnselectedFlag,
+    FilterGeneralFlag,
+    FilterIndicatorFlag,
+    FilterMatchFlag,
+    FilterPromptFlag,
+    FilterTextFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -36,3 +41,12 @@ class ConfirmArguments(Argument):
         self.prompt = ConfirmPromptFlag()
         self.selected = ConfirmSelectedFlag()
         self.unselected = ConfirmUnselectedFlag()
+
+
+class FilterArguments(Argument):
+    def __init__(self):
+        self.general = FilterGeneralFlag()
+        self.match = FilterMatchFlag()
+        self.prompt = FilterPromptFlag()
+        self.indicator = FilterIndicatorFlag()
+        self.text = FilterTextFlag()

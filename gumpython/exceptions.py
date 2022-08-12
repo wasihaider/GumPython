@@ -27,6 +27,10 @@ class ConfirmArgumentError(ArgumentError):
     pass
 
 
+class FilterArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 
