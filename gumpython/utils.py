@@ -3,6 +3,7 @@ from gumpython.inputs import (
     Alignment,
     Border,
     Color,
+    Format,
     IntegerInput,
     Position,
     StringInput,
@@ -41,6 +42,10 @@ def get_position_object(value, flag_name):
     return Position(value, flag_name)
 
 
+def get_format_object(value, flag_name):
+    return Format(value, flag_name)
+
+
 FLAG_TYPE_INPUT_MAPPING = {
     FlagTypeChoice.COLOR: get_color_object,
     FlagTypeChoice.INT: get_integer_input_object,
@@ -48,6 +53,7 @@ FLAG_TYPE_INPUT_MAPPING = {
     FlagTypeChoice.ALIGN: get_alignment_object,
     FlagTypeChoice.POSITION: get_position_object,
     FlagTypeChoice.BORDER: get_border_object,
+    FlagTypeChoice.FORMAT: get_format_object,
 }
 
 

@@ -12,6 +12,7 @@ from gumpython.flags import (
     FilterMatchFlag,
     FilterPromptFlag,
     FilterTextFlag,
+    FormatFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -50,3 +51,8 @@ class FilterArguments(Argument):
         self.prompt = FilterPromptFlag()
         self.indicator = FilterIndicatorFlag()
         self.text = FilterTextFlag()
+
+
+class FormatArguments(Argument):
+    def __init__(self):
+        self.type = FormatFlag()

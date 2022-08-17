@@ -31,6 +31,10 @@ class FilterArgumentError(ArgumentError):
     pass
 
 
+class FormatArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 
@@ -48,4 +52,8 @@ class PositionInputError(InputError):
 
 
 class AlignmentInputError(InputError):
+    pass
+
+
+class FormatInputError(InputError):
     pass
