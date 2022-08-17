@@ -14,8 +14,8 @@ class GumCommand:
         self._compile_command()
         response = run_command(self.command, self.input)
         if self.returning:
-            return response
-        print(response)
+            return response.stdout
+        print(response.stdout)
 
     def _add_to_flag_set(self, flag, value):
         if flag.type != FlagTypeChoice.BOOL:
