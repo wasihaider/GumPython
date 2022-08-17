@@ -6,7 +6,6 @@ from .exceptions import GumNotFoundError, GumPythonError
 def run_command(cmd, command_input: str = None):
     try:
         if command_input:
-            print(f"type= {type(command_input)}, content= {command_input}")
             response = subprocess.run(
                 cmd, input=command_input, stdout=subprocess.PIPE, text=True
             )
