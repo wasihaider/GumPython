@@ -17,4 +17,5 @@ from .filter_flags import (
     FilterPromptFlag,
     FilterTextFlag,
 )
+from .format_flags import FormatFlag
 from .style_flags import StyleBorderFlag, StyleFlag, StyleTextFlag

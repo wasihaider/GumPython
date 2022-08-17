@@ -6,6 +6,7 @@ class FlagTypeChoice:
     ALIGN = "alignment"
     POSITION = "position"
     BORDER = "border"
+    FORMAT = "format"
 
 
 class FlagSeparatorChoice:
