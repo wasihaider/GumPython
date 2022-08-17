@@ -11,7 +11,7 @@ def run_command(cmd, command_input: str = None):
             )
         else:
             response = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
-        return response.stdout
+        return response
     except FileNotFoundError as fe:
         if "No such file or directory: 'gum'" in str(fe):
             raise GumNotFoundError(

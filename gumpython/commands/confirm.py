@@ -1,5 +1,6 @@
 from gumpython.arguments import ConfirmArguments
 from gumpython.exceptions import ConfirmArgumentError
+from gumpython.run_command import run_command
 
 from .command import GumCommand
 
@@ -11,6 +12,7 @@ class Confirm(GumCommand):
         self.message = message
         self._validate_message()
         self.arguments = ConfirmArguments()
+        self.returning = True
 
     def _compile_command(self):
         super(Confirm, self)._compile_command()
@@ -21,6 +23,11 @@ class Confirm(GumCommand):
             raise ConfirmArgumentError(
                 f"'str' expected for message argument but '{type(self.message).__name__}' is given."
             )
+
+    def run(self):
+        self._compile_command()
+        response = run_command(self.command, self.input)
+        return response.returncode == 0
 
     def affirmative(self, text: str):
         self._add_to_flag_set(self.arguments.general.affirmative, text)
