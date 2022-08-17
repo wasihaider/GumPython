@@ -3,9 +3,15 @@ import subprocess
 from .exceptions import GumNotFoundError, GumPythonError
 
 
-def run_command(cmd):
+def run_command(cmd, command_input: str = None):
     try:
-        response = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
+        if command_input:
+            print(f"type= {type(command_input)}, content= {command_input}")
+            response = subprocess.run(
+                cmd, input=command_input, stdout=subprocess.PIPE, text=True
+            )
+        else:
+            response = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
         return response.stdout
     except FileNotFoundError as fe:
         if "No such file or directory: 'gum'" in str(fe):

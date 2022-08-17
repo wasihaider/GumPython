@@ -8,10 +8,11 @@ class GumCommand:
         self.argument = None
         self.__flag_set = set()
         self.returning = False
+        self.input = None
 
     def run(self):
         self._compile_command()
-        response = run_command(self.command)
+        response = run_command(self.command, self.input)
         if self.returning:
             return response
         print(response)

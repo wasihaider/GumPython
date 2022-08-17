@@ -1,34 +1,19 @@
-import os
-import subprocess
 from typing import List
 
 from gumpython.arguments import FilterArguments
-from gumpython.exceptions import (
-    FilterArgumentError,
-    GumNotFoundError,
-    GumPythonError,
-)
+from gumpython.exceptions import FilterArgumentError
 
 from .command import GumCommand
 
 
 class Filter(GumCommand):
-    def __init__(self, item_list: List[str], use_current_dir=False):
+    def __init__(self, item_list: List[str]):
         super(Filter, self).__init__()
         self.argument = "filter"
         self.item_list = item_list
-        self.use_current_dir = use_current_dir
         self._validate_item_list()
+        self.input = "\n".join(self.item_list)
         self.arguments = FilterArguments()
-        self.__file_path = "~gumpython.filter"
-
-    def __clean(self):
-        if os.path.exists(self.__file_path):
-            os.remove(self.__file_path)
-
-    def __populate(self):
-        with open(self.__file_path, "w") as file:
-            file.write("\n".join(self.item_list))
 
     def _validate_item_list(self):
         if not isinstance(self.item_list, list):
@@ -41,31 +26,6 @@ class Filter(GumCommand):
             if not isinstance(item, str):
                 raise FilterArgumentError(f"{item} is not a string value.")
         return True
-
-    def run(self):
-        try:
-            self.__clean()
-            self.__populate()
-            self._compile_command()
-            cat_command = ["cat", self.__file_path]
-            cat_output = subprocess.Popen(
-                cat_command, stdout=subprocess.PIPE, text=True
-            )
-            response = subprocess.run(
-                self.command,
-                stdout=subprocess.PIPE,
-                stdin=cat_output.stdout,
-                text=True,
-            )
-            self.__clean()
-            return response.stdout.replace("\n", "")
-        except FileNotFoundError as fe:
-            self.__clean()
-            if "No such file or directory: 'gum'" in str(fe):
-                raise GumNotFoundError(
-                    "No gum installation found. Please install gum cli. See README for dependencies."
-                )
-            raise GumPythonError(str(fe))
 
     def indicator(self, indicator: str):
         self._add_to_flag_set(self.arguments.indicator.indicator, indicator)
