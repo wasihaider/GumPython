@@ -3,5 +3,6 @@ from .arguments import (
     ConfirmArguments,
     FilterArguments,
     FormatArguments,
+    InputArguments,
     StyleArgument,
 )
