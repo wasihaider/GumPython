@@ -18,4 +18,5 @@ from .filter_flags import (
     FilterTextFlag,
 )
 from .format_flags import FormatFlag
+from .input_flags import InputCursorFlag, InputGeneralFlag, InputPromptFlag
 from .style_flags import StyleBorderFlag, StyleFlag, StyleTextFlag

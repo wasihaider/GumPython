@@ -13,6 +13,9 @@ from gumpython.flags import (
     FilterPromptFlag,
     FilterTextFlag,
     FormatFlag,
+    InputCursorFlag,
+    InputGeneralFlag,
+    InputPromptFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -56,3 +59,10 @@ class FilterArguments(Argument):
 class FormatArguments(Argument):
     def __init__(self):
         self.type = FormatFlag()
+
+
+class InputArguments(Argument):
+    def __init__(self):
+        self.general = InputGeneralFlag()
+        self.cursor = InputCursorFlag()
+        self.prompt = InputPromptFlag()
