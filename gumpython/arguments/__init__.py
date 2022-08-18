@@ -5,5 +5,6 @@ from .arguments import (
     FormatArguments,
     InputArguments,
     JoinArguments,
+    SpinArguments,
     StyleArgument,
 )

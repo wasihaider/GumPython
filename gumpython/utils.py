@@ -6,6 +6,7 @@ from gumpython.inputs import (
     Format,
     IntegerInput,
     Position,
+    Spinner,
     StringInput,
 )
 
@@ -46,6 +47,10 @@ def get_format_object(value, flag_name):
     return Format(value, flag_name)
 
 
+def get_spinner_object(value, flag_name):
+    return Spinner(value, flag_name)
+
+
 FLAG_TYPE_INPUT_MAPPING = {
     FlagTypeChoice.COLOR: get_color_object,
     FlagTypeChoice.INT: get_integer_input_object,
@@ -54,6 +59,7 @@ FLAG_TYPE_INPUT_MAPPING = {
     FlagTypeChoice.POSITION: get_position_object,
     FlagTypeChoice.BORDER: get_border_object,
     FlagTypeChoice.FORMAT: get_format_object,
+    FlagTypeChoice.SPINNER: get_spinner_object,
 }
 
 
