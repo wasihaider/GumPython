@@ -17,6 +17,9 @@ from gumpython.flags import (
     InputGeneralFlag,
     InputPromptFlag,
     JoinTextFlag,
+    SpinnerFlag,
+    SpinnerTitleFlag,
+    SpinSpinnerFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -72,3 +75,10 @@ class InputArguments(Argument):
 class JoinArguments(Argument):
     def __init__(self):
         self.text = JoinTextFlag()
+
+
+class SpinArguments(Argument):
+    def __init__(self):
+        self.general = SpinnerFlag()
+        self.spinner = SpinSpinnerFlag()
+        self.title = SpinnerTitleFlag()

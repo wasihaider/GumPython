@@ -46,8 +46,7 @@ class Join(GumCommand):
         self.command.extend(self.__parsed_items)
 
     def run(self):
-        self._compile_command()
-        subprocess.run(" ".join(self.command), shell=True)
+        subprocess.run(self.get_command(), shell=True)
 
     def align(self, alignment: str):
         self._add_to_flag_set(self.arguments.text.align, alignment)

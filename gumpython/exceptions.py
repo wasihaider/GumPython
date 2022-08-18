@@ -39,6 +39,10 @@ class JoinArgumentError(ArgumentError):
     pass
 
 
+class SpinArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 
@@ -60,4 +64,8 @@ class AlignmentInputError(InputError):
 
 
 class FormatInputError(InputError):
+    pass
+
+
+class SpinnerInputError(InputError):
     pass

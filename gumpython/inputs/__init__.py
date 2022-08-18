@@ -5,3 +5,4 @@ from .color import Color
 from .format import Format
 from .inputs import Input
 from .position import Position
+from .spinner import Spinner

@@ -7,6 +7,7 @@ class FlagTypeChoice:
     POSITION = "position"
     BORDER = "border"
     FORMAT = "format"
+    SPINNER = "spinner"
 
 
 class FlagSeparatorChoice:
