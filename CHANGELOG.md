@@ -1,3 +1,9 @@
+## v0.2.1 (2022-08-18)
+
+### Fix
+
+- **run_command**: Do not need to run every command with sub-shell
+
 ## v0.2.0 (2022-08-18)
 
 ### Feat
