@@ -17,6 +17,10 @@ class GumCommand:
             return response.stdout
         print(response.stdout)
 
+    def get_command(self):
+        self._compile_command()
+        return " ".join(self.command)
+
     def _add_to_flag_set(self, flag, value):
         if flag.type != FlagTypeChoice.BOOL:
             flag.value = value
@@ -78,4 +82,4 @@ class GumCommand:
             self._add_to_flag_set(flag.height, height)
 
     def __str__(self):
-        return " ".join(self.command)
+        return self.get_command()

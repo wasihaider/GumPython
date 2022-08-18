@@ -17,9 +17,9 @@ class Style(GumCommand):
     def _compile_command(self):
         super(Style, self)._compile_command()
         if isinstance(self.text, str):
-            self.command.append(self.text)
+            self.command.append(f"'{self.text}'")
         if isinstance(self.text, list):
-            self.command.extend(self.text)
+            self.command.extend(list(map(lambda x: f"'{x}'", self.text)))
 
     def _validate_text_argument(self):
         if isinstance(self.text, str):
