@@ -1,3 +1,23 @@
+## v0.2.0 (2022-08-18)
+
+### Feat
+
+- **Spin**: Add support for 'spin' command and all its flags
+- **Join**: Add support for 'join' argument
+- **Input**: Add support for 'input' command and all its flags
+- **Format**: Add format command support
+- **Choose**: Return seleted items as list
+- **Filter**: Add support for 'filter' command and all its flags
+- **Confirm**: Add support for "confirm" command and all its flags
+- **Choose**: Add support for remaining list flags
+- **Choose**: Add support for Choose "selected" argument
+- Add ChooseItemFlag class for choose item argument
+
+### Refactor
+
+- Remove code repitition
+- **ChooseArgument**: Add item argument
+
 ## v0.1.3 (2022-08-06)
 
 ### Refactor
