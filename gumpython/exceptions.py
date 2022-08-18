@@ -35,6 +35,10 @@ class FormatArgumentError(ArgumentError):
     pass
 
 
+class JoinArgumentError(ArgumentError):
+    pass
+
+
 class InputError(GumPythonError):
     pass
 

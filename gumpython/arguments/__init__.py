@@ -4,5 +4,6 @@ from .arguments import (
     FilterArguments,
     FormatArguments,
     InputArguments,
+    JoinArguments,
     StyleArgument,
 )

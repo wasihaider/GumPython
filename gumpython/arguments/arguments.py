@@ -16,6 +16,7 @@ from gumpython.flags import (
     InputCursorFlag,
     InputGeneralFlag,
     InputPromptFlag,
+    JoinTextFlag,
     StyleBorderFlag,
     StyleTextFlag,
 )
@@ -66,3 +67,8 @@ class InputArguments(Argument):
         self.general = InputGeneralFlag()
         self.cursor = InputCursorFlag()
         self.prompt = InputPromptFlag()
+
+
+class JoinArguments(Argument):
+    def __init__(self):
+        self.text = JoinTextFlag()
