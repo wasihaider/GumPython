@@ -1,4 +1,5 @@
 from gumpython.arguments import InputArguments
+from gumpython.style import GumStyle
 
 from .command import GumCommand
 
@@ -34,96 +35,13 @@ class Input(GumCommand):
         self._add_to_flag_set(self.arguments.general.width, width)
         return self
 
-    def cursor_align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.cursor, alignment, margin, padding)
+    def cursor_style(self, style: GumStyle):
+        self._compile_style(style, self.arguments.cursor)
         return self
 
-    def cursor_color(
-        self, foreground_color: str, background_color: str = None
-    ):
-        self._color(self.arguments.cursor, foreground_color, background_color)
-        return self
-
-    def cursor_style(
-        self,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.cursor,
-            bold,
-            italic,
-            faint,
-            underline,
-            strikethrough,
-        )
-        return self
-
-    def cursor_border(
-        self,
-        style: str,
-        foreground_color: str = None,
-        background_color: str = None,
-    ):
-        self._border(
-            self.arguments.cursor, style, foreground_color, background_color
-        )
-        return self
-
-    def cursor_size(self, width: int = None, height: int = None):
-        self._size(self.arguments.cursor, width, height)
-        return self
-
-    def prompt(self, prompt: str):
+    def prompt(self, prompt: str, style: GumStyle = None):
         self._add_to_flag_set(self.arguments.prompt.prompt, prompt)
         return self
 
-    def prompt_align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.prompt, alignment, margin, padding)
-        return self
-
-    def prompt_color(
-        self, foreground_color: str, background_color: str = None
-    ):
-        self._color(self.arguments.prompt, foreground_color, background_color)
-        return self
-
-    def prompt_style(
-        self,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.prompt,
-            bold,
-            italic,
-            faint,
-            underline,
-            strikethrough,
-        )
-        return self
-
-    def prompt_border(
-        self,
-        style: str,
-        foreground_color: str = None,
-        background_color: str = None,
-    ):
-        self._border(
-            self.arguments.prompt, style, foreground_color, background_color
-        )
-        return self
-
-    def prompt_size(self, width: int = None, height: int = None):
-        self._size(self.arguments.prompt, width, height)
-        return self
+    def prompt_style(self, style: GumStyle):
+        self._compile_style(style, self.arguments.prompt)

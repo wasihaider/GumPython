@@ -20,8 +20,7 @@ from gumpython.flags import (
     SpinnerFlag,
     SpinnerTitleFlag,
     SpinSpinnerFlag,
-    StyleBorderFlag,
-    StyleTextFlag,
+    StyleFlag,
 )
 
 
@@ -31,8 +30,7 @@ class Argument:
 
 class StyleArgument(Argument):
     def __init__(self):
-        self.border = StyleBorderFlag()
-        self.text = StyleTextFlag()
+        self.args = StyleFlag()
 
 
 class ChooseArgument(Argument):

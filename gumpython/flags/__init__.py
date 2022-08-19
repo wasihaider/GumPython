@@ -21,4 +21,4 @@ from .format_flags import FormatFlag
 from .input_flags import InputCursorFlag, InputGeneralFlag, InputPromptFlag
 from .join_flags import JoinTextFlag
 from .spin_flags import SpinnerFlag, SpinnerTitleFlag, SpinSpinnerFlag
-from .style_flags import StyleBorderFlag, StyleFlag, StyleTextFlag
+from .style_flags import StyleFlag
