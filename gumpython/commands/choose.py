@@ -2,6 +2,7 @@ from typing import List
 
 from gumpython.arguments import ChooseArgument
 from gumpython.exceptions import ChooseArgumentError
+from gumpython.style import GumStyle
 
 from .command import GumCommand
 
@@ -33,150 +34,28 @@ class Choose(GumCommand):
         response = super(Choose, self).run()
         return response.split("\n")[:-1]
 
-    def cursor(self, cursor_text: str, prefix: str = None):
-        cursor_arg = self.arguments.cursor
-        self._add_to_flag_set(cursor_arg.cursor, cursor_text)
-        if prefix:
-            self._add_to_flag_set(cursor_arg.prefix, prefix)
+    def cursor(self, cursor_text: str):
+        self._add_to_flag_set(self.arguments.cursor.cursor, cursor_text)
         return self
 
-    def cursor_align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.cursor, alignment, margin, padding)
+    def cursor_prefix(self, prefix: str):
+        self._add_to_flag_set(self.arguments.cursor.prefix, prefix)
         return self
 
-    def cursor_color(
-        self, foreground_color: str, background_color: str = None
-    ):
-        self._color(self.arguments.cursor, foreground_color, background_color)
+    def cursor_style(self, style: GumStyle):
+        self._compile_style(style, self.arguments.cursor)
         return self
 
-    def cursor_style(
-        self,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.cursor,
-            bold,
-            italic,
-            faint,
-            underline,
-            strikethrough,
-        )
-        return self
-
-    def cursor_border(
-        self,
-        style: str,
-        foreground_color: str = None,
-        background_color: str = None,
-    ):
-        self._border(
-            self.arguments.cursor, style, foreground_color, background_color
-        )
-        return self
-
-    def cursor_size(self, width: int = None, height: int = None):
-        self._size(self.arguments.cursor, width, height)
-        return self
-
-    def items_align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.item, alignment, margin, padding)
-        return self
-
-    def items_color(self, foreground_color: str, background_color: str = None):
-        self._color(self.arguments.item, foreground_color, background_color)
-        return self
-
-    def items_style(
-        self,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.item,
-            bold,
-            italic,
-            faint,
-            underline,
-            strikethrough,
-        )
-        return self
-
-    def items_border(
-        self,
-        style: str,
-        foreground_color: str = None,
-        background_color: str = None,
-    ):
-        self._border(
-            self.arguments.item, style, foreground_color, background_color
-        )
-        return self
-
-    def items_size(self, width: int = None, height: int = None):
-        self._size(self.arguments.item, width, height)
+    def items_style(self, style: GumStyle):
+        self._compile_style(style, self.arguments.item)
         return self
 
     def selected_prefix(self, prefix: str):
         self._add_to_flag_set(self.arguments.selected.prefix, prefix)
         return self
 
-    def selected_align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.selected, alignment, margin, padding)
-        return self
-
-    def selected_color(
-        self, foreground_color: str, background_color: str = None
-    ):
-        self._color(
-            self.arguments.selected, foreground_color, background_color
-        )
-        return self
-
-    def selected_style(
-        self,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.selected,
-            bold,
-            italic,
-            faint,
-            underline,
-            strikethrough,
-        )
-        return self
-
-    def selected_border(
-        self,
-        style: str,
-        foreground_color: str = None,
-        background_color: str = None,
-    ):
-        self._border(
-            self.arguments.selected, style, foreground_color, background_color
-        )
-        return self
-
-    def selected_size(self, width: int = None, height: int = None):
-        self._size(self.arguments.selected, width, height)
+    def selected_style(self, style: GumStyle):
+        self._compile_style(style, self.arguments.selected)
         return self
 
     def list_height(self, height: int):

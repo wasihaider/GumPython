@@ -2,24 +2,29 @@ from typing import List, Union
 
 from gumpython.arguments import StyleArgument
 from gumpython.exceptions import StyleArgumentError
+from gumpython.style import GumStyle
 
 from .command import GumCommand
 
 
 class Style(GumCommand):
-    def __init__(self, text: Union[str, List[str]]):
+    def __init__(
+        self, text: Union[str, List[str]], gum_style_object: GumStyle
+    ):
         super().__init__()
         self.argument = "style"
         self.text = text
         self._validate_text_argument()
         self.arguments = StyleArgument()
+        self.gum_style_object = gum_style_object
 
     def _compile_command(self):
+        self._compile_style(self.gum_style_object, self.arguments.args)
         super(Style, self)._compile_command()
         if isinstance(self.text, str):
-            self.command.append(f"'{self.text}'")
+            self.command.append(self.text)
         if isinstance(self.text, list):
-            self.command.extend(list(map(lambda x: f"'{x}'", self.text)))
+            self.command.extend(self.text)
 
     def _validate_text_argument(self):
         if isinstance(self.text, str):
@@ -33,40 +38,11 @@ class Style(GumCommand):
             f"Expected 'str' or List[str] but '{type(self.text).__name__}' is given."
         )
 
-    def border(
-        self,
-        style: str = None,
-        foreground_color: Union[str, tuple] = None,
-        background_color: Union[str, tuple] = None,
-    ):
-        self._border(
-            self.arguments.border, style, foreground_color, background_color
-        )
-        return self
-
-    def align(
-        self, alignment: str, margin: tuple = None, padding: tuple = None
-    ):
-        self._align(self.arguments.text, alignment, margin, padding)
-        return self
-
-    def text_color(self, foreground, background=None):
-        self._color(self.arguments.text, foreground, background)
-        return self
-
-    def text_font(
-        self,
-        bold: bool = False,
-        faint: bool = False,
-        italic: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        self._font_style(
-            self.arguments.text, bold, faint, italic, underline, strikethrough
-        )
-        return self
-
-    def size(self, width: int, height: int = None):
-        self._size(self.arguments.text, width, height)
-        return self
+    def get_command(self):
+        self._compile_style(self.gum_style_object, self.arguments.args)
+        super(Style, self)._compile_command()
+        if isinstance(self.text, str):
+            self.command.append(f"'{self.text}'")
+        if isinstance(self.text, list):
+            self.command.extend(list(map(lambda x: f"'{x}'", self.text)))
+        return " ".join(self.command)

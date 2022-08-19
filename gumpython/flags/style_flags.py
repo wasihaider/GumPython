@@ -4,10 +4,6 @@ from .flags import Flag, SubFlag
 
 
 class StyleFlag:
-    pass
-
-
-class StyleBorderFlag(StyleFlag):
     def __init__(self):
         self.border = Flag(name="border", type=FlagTypeChoice.BORDER)
         self.border_background = SubFlag(
@@ -22,10 +18,6 @@ class StyleBorderFlag(StyleFlag):
             sub_name="foreground",
             separator=FlagSeparatorChoice.HYPHEN,
         )
-
-
-class StyleTextFlag(StyleFlag):
-    def __init__(self):
         self.align = Flag(name="align", type=FlagTypeChoice.ALIGN)
         self.background = Flag(name="background", type=FlagTypeChoice.COLOR)
         self.foreground = Flag(name="foreground", type=FlagTypeChoice.COLOR)
