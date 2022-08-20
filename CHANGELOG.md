@@ -1,3 +1,12 @@
+## v0.3.0 (2022-08-20)
+
+### Feat
+
+- **Write**: Add support for 'write' command
+- **GumStyle**: Add styling with object
+
+## v0.2.0 (2022-08-18)
+
 ## v0.2.1 (2022-08-18)
 
 ### Fix
