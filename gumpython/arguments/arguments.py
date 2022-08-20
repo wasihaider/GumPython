@@ -21,6 +21,15 @@ from gumpython.flags import (
     SpinnerTitleFlag,
     SpinSpinnerFlag,
     StyleFlag,
+    WriteBaseFlag,
+    WriteCursorFlag,
+    WriteCursorLineFlag,
+    WriteCursorLineNumberFlag,
+    WriteEndOfBuffer,
+    WriteGeneralFlag,
+    WriteLineNumberFlag,
+    WritePlaceholderFlag,
+    WritePromptFlag,
 )
 
 
@@ -80,3 +89,16 @@ class SpinArguments(Argument):
         self.general = SpinnerFlag()
         self.spinner = SpinSpinnerFlag()
         self.title = SpinnerTitleFlag()
+
+
+class WriteArguments(Argument):
+    def __init__(self):
+        self.base = WriteBaseFlag()
+        self.cursor = WriteCursorFlag()
+        self.cursor_line = WriteCursorLineFlag()
+        self.cursor_line_number = WriteCursorLineNumberFlag()
+        self.end_of_buffer = WriteEndOfBuffer()
+        self.general = WriteGeneralFlag()
+        self.line_number = WriteLineNumberFlag()
+        self.placeholder = WritePlaceholderFlag()
+        self.prompt = WritePromptFlag()
