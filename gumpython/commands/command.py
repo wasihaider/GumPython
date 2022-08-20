@@ -48,52 +48,5 @@ class GumCommand:
             else:
                 self.command.append(flag.get_command())
 
-    def _align(self, flag, alignment, margin=None, padding=None):
-        self._add_to_flag_set(flag.align, alignment)
-        if margin:
-            self._add_to_flag_set(flag.margin, margin)
-        if padding:
-            self._add_to_flag_set(flag.padding, padding)
-
-    def _border(
-        self, flag, style, foreground_color=None, background_color=None
-    ):
-        self._add_to_flag_set(flag.border, style)
-        if foreground_color:
-            self._add_to_flag_set(flag.border_foreground, foreground_color)
-        if background_color:
-            self._add_to_flag_set(flag.border_background, background_color)
-
-    def _color(self, flag, foreground, background=None):
-        self._add_to_flag_set(flag.foreground, foreground)
-        if background:
-            self._add_to_flag_set(flag.background, background)
-
-    def _font_style(
-        self,
-        flag,
-        bold: bool = False,
-        italic: bool = False,
-        faint: bool = False,
-        underline: bool = False,
-        strikethrough: bool = False,
-    ):
-        if bold:
-            self._add_to_flag_set(flag.bold, True)
-        if faint:
-            self._add_to_flag_set(flag.faint, True)
-        if italic:
-            self._add_to_flag_set(flag.italic, True)
-        if underline:
-            self._add_to_flag_set(flag.underline, True)
-        if strikethrough:
-            self._add_to_flag_set(flag.strikethrough, True)
-
-    def _size(self, flag, width: int = None, height: int = None):
-        if width:
-            self._add_to_flag_set(flag.width, width)
-        if height:
-            self._add_to_flag_set(flag.height, height)
-
     def __str__(self):
         return self.get_command()
