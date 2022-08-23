@@ -9,7 +9,22 @@ from .style import Style
 
 
 class Join(GumCommand):
+    """
+    Join text vertically or horizontally.
+
+    It can join texts, style objects and also the join objects itself.
+    It joins the objects horizontally by default, use vertical() on this object for a vertical join.
+    """
+
     def __init__(self, items=List[Union[str, GumCommand]]):
+        """
+        Join text vertically or horizontally.
+
+        It can join texts, style objects and also the join objects itself.
+        It joins the objects horizontally by default, use vertical() on this object for a vertical join.
+
+        :param items: A list of strings or GumCommand objects
+        """
         super(Join, self).__init__()
         self.argument = "join"
         self.items = items
@@ -49,9 +64,20 @@ class Join(GumCommand):
         subprocess.run(self.get_command(), shell=True)
 
     def align(self, alignment: str):
+        """
+        Set the text alignment.
+
+        :param alignment: The alignment of the text.
+        :type alignment: str
+        :return: The object itself.
+        """
         self._add_to_flag_set(self.arguments.text.align, alignment)
         return self
 
     def vertical(self):
+        """
+        Join given objects vertically.
+        :return: The object itself.
+        """
         self.__vertical = True
         return self

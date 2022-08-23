@@ -8,9 +8,21 @@ from .command import GumCommand
 
 
 class Style(GumCommand):
+    """
+    Apply coloring, borders, spacing to text.
+    """
+
     def __init__(
         self, text: Union[str, List[str]], gum_style_object: GumStyle
     ):
+        """
+        Apply coloring, borders, spacing to text.
+
+        :param text: The text you want to style
+        :type text: Union[str, List[str]]
+        :param gum_style_object: This is the object that contains the style information
+        :type gum_style_object: GumStyle
+        """
         super().__init__()
         self.argument = "style"
         self.text = text

@@ -5,7 +5,16 @@ from .command import GumCommand
 
 
 class Format(GumCommand):
+    """
+    Format a string using a template
+    """
+
     def __init__(self, text):
+        """
+        Format a string using a template
+
+        :param text: The text to be formatted
+        """
         super(Format, self).__init__()
         self.argument = "format"
         self.arguments = FormatArguments()
@@ -23,5 +32,12 @@ class Format(GumCommand):
         self.command.append(self.text)
 
     def type(self, format_type: str):
+        """
+        Format to use (markdown,template,code,emoji)
+
+        :param format_type: The type of format to use
+        :type format_type: str
+        :return: The object itself.
+        """
         self._add_to_flag_set(self.arguments.type.type, format_type)
         return self

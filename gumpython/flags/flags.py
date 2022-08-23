@@ -7,6 +7,7 @@ from gumpython.utils import get_input_object
 
 
 @dataclass
+# It's a class that represents a flag
 class Flag:
     name: str
     type: str
@@ -32,6 +33,10 @@ class Flag:
         return self.name
 
     def get_command(self):
+        """
+        It returns a string that is the flag and value of the argument
+        :return: The flag and the value of the flag.
+        """
         return f"{self.flag}={self.value.compile()}"
 
     def __hash__(self):
@@ -55,6 +60,7 @@ class SubFlag(Flag):
         return hash((self.name, self.sub_name))
 
 
+# It's a base class for flags
 class BaseFlag:
     def __init__(self):
         self.flag_name = self.get_flag_name()
